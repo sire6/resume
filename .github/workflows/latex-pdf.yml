@@ -16,7 +16,7 @@ jobs:
       - name: Set up TeX Live
         uses: xu-cheng/texlive-action@v2
         with:
-          packages: scheme-full
+          scheme: full
 
       - name: Compile LaTeX to PDF
         run: |
