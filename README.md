@@ -31,10 +31,6 @@ On every push or pull request to <strong>main</strong>:
 
 
 
-
-
-
-
 ## 🖥️ Local usage
 
 To build the CV locally with Nix:
@@ -53,9 +49,6 @@ The <code>build-resume</code> alias runs <code>pdflatex</code> twice in the corr
 </details>
 
 
-
-
----
 
 
 ## 🌐 Public PDF URL
