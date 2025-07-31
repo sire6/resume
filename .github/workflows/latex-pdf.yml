@@ -13,16 +13,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up TeX Live
-        uses: xu-cheng/texlive-action@v2
+
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v31
         with:
-          scheme: full
+          nix_path: nixpkgs=channel:nixos-24.11
 
       - name: Compile LaTeX to PDF
         run: |
           mkdir -p build
-          pdflatex -output-directory build resume.tex
-          pdflatex -output-directory build resume.tex
+          nix-shell --pure --run "pdflatex -interaction=nonstopmode -output-directory=build resume.tex"
+          nix-shell --pure --run "pdflatex -interaction=nonstopmode -output-directory=build resume.tex"
 
       - name: Copy PDF to docs
         run: |
