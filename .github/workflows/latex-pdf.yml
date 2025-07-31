@@ -22,8 +22,8 @@ jobs:
       - name: Compile LaTeX to PDF
         run: |
           mkdir -p build
-          nix-shell --pure --run "pdflatex -interaction=nonstopmode -output-directory=build resume.tex"
-          nix-shell --pure --run "pdflatex -interaction=nonstopmode -output-directory=build resume.tex"
+          nix-shell -p texlive.combined.scheme-full --run "pdflatex -interaction=nonstopmode -output-directory=build resume.tex"
+          nix-shell -p texlive.combined.scheme-full --run "pdflatex -interaction=nonstopmode -output-directory=build resume.tex"
 
       - name: Copy PDF to docs
         run: |
