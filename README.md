@@ -20,23 +20,56 @@ This repository contains the LaTeX source file for my CV. The main goal is to au
 - The generated PDF is then published as a workflow artifact or added to the releases section, ensuring there is always an up-to-date version of the CV without manual compilation.
 
 
+
 ## 📁 Repository structure
 
-- <code>resume.tex</code>: LaTeX source of the CV
+- <code>resume.tex</code>: LaTeX source of the CV 
+- <code>developercv.cls</code>: Custom LaTeX class file
+- <code>build/</code>: Output directory for generated files (PDF, aux, log, etc.)
+- <code>.github/workflows/latex-pdf.yml</code>: GitHub Actions workflow for automatic PDF build
 - <code>LICENSE</code>: MIT License (see the file for details)
-- <code>.github/workflows/</code>: (to be created) Will contain the GitHub Actions workflow for automatic compilation
+
+
+
 
 
 ## 🖥️ Local usage
 
-
-To compile the CV locally:
-
+To build the CV locally, install LaTeX (if not already installed):
 
 ```bash
-pdflatex resume.tex
+sudo apt install texlive-full
 ```
 
+Then run (to output the PDF in the build/ directory):
+
+```bash
+pdflatex -output-directory build resume.tex
+```
+
+Open the generated <code>build/resume.pdf</code> with your preferred PDF viewer.
+
+
+## 🤖 GitHub Actions: Automatic PDF build
+
+Every push or pull request on <strong>main</strong> triggers a workflow (<code>.github/workflows/latex-pdf.yml</code>) that:
+
+1. Installs a full LaTeX environment
+2. Compiles <code>resume.tex</code> (output in <code>build/</code>)
+
+3. Publishes the PDF to GitHub Pages for public access at a fixed URL
+
+This ensures your CV PDF is always up-to-date and available at a public, stable URL (see below) without manual compilation or committing generated files.
+
+---
+
+## 🌐 Public PDF URL
+
+The latest version of the CV PDF is always available at:
+
+```
+https://sire6.github.io/resume/resume.pdf
+```
 
 ## 👥 Authors and credits
 
