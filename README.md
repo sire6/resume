@@ -37,15 +37,15 @@ This repository contains the LaTeX source file for my CV. The main goal is to au
 
 ## 🖥️ Local usage
 
+
 To build the CV locally with Nix:
 
 ```bash
 nix-shell
-pdflatex -interaction=nonstopmode -output-directory=build resume.tex
-pdflatex -interaction=nonstopmode -output-directory=build resume.tex
+build-resume
 ```
 
-Open the generated <code>build/resume.pdf</code> with your preferred PDF viewer.
+This will generate <code>build/resume.pdf</code>. Open it with your preferred PDF viewer.
 
 
 ## 🤖 GitHub Actions: Automatic PDF build
