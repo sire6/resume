@@ -1,0 +1,39 @@
+name: Build LaTeX PDF
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up TeX Live
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          packages: >-
+            scheme-full
+
+      - name: Compile LaTeX to PDF
+        run: |
+          mkdir -p build
+          pdflatex -output-directory build resume.tex
+          pdflatex -output-directory build resume.tex
+
+      - name: Copy PDF to docs
+        run: |
+          mkdir -p docs
+          cp build/resume.pdf docs/resume.pdf
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
+          force_orphan: true
