@@ -33,18 +33,16 @@ This repository contains the LaTeX source file for my CV. The main goal is to au
 
 
 
+
+
 ## 🖥️ Local usage
 
-To build the CV locally, install LaTeX (if not already installed):
+To build the CV locally with Nix:
 
 ```bash
-sudo apt install texlive-full
-```
-
-Then run (to output the PDF in the build/ directory):
-
-```bash
-pdflatex -output-directory build resume.tex
+nix-shell
+pdflatex -interaction=nonstopmode -output-directory=build resume.tex
+pdflatex -interaction=nonstopmode -output-directory=build resume.tex
 ```
 
 Open the generated <code>build/resume.pdf</code> with your preferred PDF viewer.
@@ -52,14 +50,14 @@ Open the generated <code>build/resume.pdf</code> with your preferred PDF viewer.
 
 ## 🤖 GitHub Actions: Automatic PDF build
 
+
 Every push or pull request on <strong>main</strong> triggers a workflow (<code>.github/workflows/latex-pdf.yml</code>) that:
 
-1. Installs a full LaTeX environment
+1. Uses <strong>Nix</strong> to provide a reproducible LaTeX environment (matching local usage)
 2. Compiles <code>resume.tex</code> (output in <code>build/</code>)
-
 3. Publishes the PDF to GitHub Pages for public access at a fixed URL
 
-This ensures your CV PDF is always up-to-date and available at a public, stable URL (see below) without manual compilation or committing generated files.
+This ensures your CV PDF is always up-to-date and available at a public, stable URL (see below) without manual compilation or committing generated files. The build environment is identical to local builds using Nix, guaranteeing consistency.
 
 ---
 
