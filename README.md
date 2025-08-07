@@ -55,7 +55,7 @@ The <code>build-resume</code> alias runs <code>pdflatex</code> twice in the corr
 
 The latest version of the CV PDF is always available at:
 
-👉 <a href="https://sire6.github.io/resume/resume.pdf" target="_blank"><code>https://sire6.github.io/resume/resume.pdf</code></a>
+<a href="https://sire6.github.io/resume/resume.pdf" target="_blank"><code>https://sire6.github.io/resume/resume.pdf</code></a>
 
 
 ## 👥 Authors & credits
